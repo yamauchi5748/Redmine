@@ -8,5 +8,10 @@ copy env-example .env
 rem 各コンテナをビルド
 docker-compose build --no-cache
 
-rem 各コンテナを起動
-docker-compose up -d
+rem mysqlを起動
+docker-compose up -d mysql
+
+timeout /t 15 /NOBREAK
+ 
+rem redmineを起動
+docker-compose up redmine
