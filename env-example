@@ -1,0 +1,25 @@
+###########################################################
+###################### General Setup ######################
+###########################################################
+
+### Paths #################################################
+
+### ホストとコンテナ内ディレクトリをマウント ###
+APP_CODE_PATH_HOST=../redmine/files
+APP_CODE_PATH_CONTAINER=/usr/src/redmine/files
+APP_PLUGIN_PATH_HOST=../redmine/plugins
+APP_PLUGIN_PATH_CONTAINER=/usr/src/redmine/plugins
+MYSQL_PATH_HOST=../redmine/mysql
+MYSQL_PATH_CONTAINER=/var/lib/mysql
+
+### ポート開放 ###
+HOST_PORT=80
+CONTAINER_PORT=3000
+
+### データベース情報 ###
+REDMINE_DB_PASSWORD=password
+MYSQL_ROOT_PASSWORD=password
+
+MYSQL_DATABASE=redmine
+MYSQL_USER=redmine
+MYSQL_PASSWORD=redmine

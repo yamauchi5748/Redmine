@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  # redmine
+  redmine:
+    build: ./docker/redmine
+    ports:
+      - ${HOST_PORT}:${CONTAINER_PORT}
+    environment:
+      REDMINE_DB_MYSQL: mysql
+      REDMINE_DB_PASSWORD: ${REDMINE_DB_PASSWORD}
+      REDMINE_PORT: ${HOST_PORT}
+      REDMINE_DB_ENCODING: utf8mb4
+    depends_on:
+      - mysql
+    volumes:
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+      - ${APP_PLUGIN_PATH_HOST}:${APP_PLUGIN_PATH_CONTAINER}
+
+  # mysql
+  mysql:
+    build: ./docker/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ${MYSQL_PATH_HOST}:${MYSQL_PATH_CONTAINER}
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci

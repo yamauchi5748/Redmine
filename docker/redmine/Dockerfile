@@ -1,0 +1,3 @@
+FROM redmine:3.4
+
+EXPOSE 80
